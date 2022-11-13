@@ -1,0 +1,269 @@
+@font-face {
+    font-family: Anurati;
+    src: url("../public/Anurati-Regular.otf")
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #17181f;
+    max-width: 100%;
+}
+
+/* Navigation Bar CSS Starts Here */
+
+.navigationBarWrapper {
+    display: flex;
+    height: 10vh;
+}
+
+.logoShadow {
+    display: flex;
+    align-items: center;
+    margin-left: 3%;
+    gap: 2%;
+    cursor: pointer;
+    user-select: none;
+}
+
+.logoShadow::before {
+    content: "";
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 0px 0px 88px #3994FF;
+    animation: glow 5s linear infinite;
+}
+
+@keyframes glow {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.5);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.brandName {
+    font-family: Arvo, Helvetica,serif;
+    font-size: clamp(3rem, 2vw + 2rem, 4rem);
+    color: white;
+}
+
+.login {
+    border-radius: 0.2em 20em;
+    font-family: Arvo, Helvetica,serif;
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
+    height: 2em;
+}
+
+.desktopNavGroup {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1%;
+}
+
+.navLinks {
+    font-family:Arvo, Helvetica,serif;
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
+    color: #FCBBF3;
+}
+
+.plugin {
+    font-family: Arvo, Helvetica,serif;
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
+    color: #FCBBF3;
+}
+
+.dropdownActive {
+    rotate: 180deg;
+    transition: rotate 200ms linear;
+}
+
+.dropdownNotActive {
+    rotate: 0deg;
+    transition: rotate 200ms linear;
+}
+
+/*Navigation CSS Ends Here*/
+
+/*Drawer Componenet CSS Starts Here */
+
+.collapseNavigationLink {
+    text-decoration: none;
+    color: #cb69c1;
+    font-family: Arvo, Helvetica,serif;
+}
+
+.collapseNavigationLinkDescription {
+    text-emphasis: none;
+    color: white;
+    font-family: Arvo, Helvetica,serif;
+}
+
+/*Drawer Componenet CSS Ends Here */
+
+/* Dropdown Component CSS Starts Here */
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    width: 30vw;
+    background: #00000059;
+    backdrop-filter: blur(1vw);
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(10%);
+    overflow: hidden;
+    transition: all 200ms cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+}
+
+.dropdown.active{
+    opacity: 1;
+    top: 1rem;
+    transform: translateY(10%);
+    transition: all 200ms cubic-bezier(.4,0,.2,1);
+    pointer-events: unset;
+}
+
+.dropdownContentWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    padding: 1vh 1vw;
+}
+
+.dropdownContent {
+    display: flex;
+    flex-direction: row;
+}
+
+.dropdownContentIconsContainer {
+    display: flex;
+    align-items: center;
+}
+
+.dropdownMainContent {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vw;
+}
+
+.dropdownContentHeadings {
+    font-family: Arvo, Helvetica,serif;
+    font-size: calc(16px + ( 20 - 16 ) * (( 100vw - 600px ) / ( 1200 - 600)));
+    font-size: 1.6rem;
+    color: white;
+}
+
+.dropdownContentHeadingParts {
+    font-family: Arvo, Helvetica,serif;
+    font-size: calc(16px + ( 20 - 16 ) * (( 100vw - 600px ) / ( 1200 - 600)));
+    font-size: 1.6rem;
+    color: grey;
+}
+
+/* Dropdown Component CSS Starts Here */
+
+.waves {
+    position: fixed;
+    bottom: 0px;
+    z-index: 0;
+}
+
+.mainContent {
+    display: flex;
+    height: 90vh;
+    width: 100vw;
+    justify-content: center;
+    padding-top: 5vh;
+    z-index: 1;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 50vw;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.dashboard {
+    font-family: Arvo, Helvetica,serif;
+    font-weight: bold;
+    color: white;
+    font-size: clamp(1.4rem, 3vw + 0.75rem, 5rem);
+}
+
+.shortDescription {
+    font-family: Arvo, Helvetica,serif;
+    color: white;
+    font-size: clamp(1.8rem, 1vw + 1.5rem, 2.6rem);
+}
+
+.addToDiscord {
+    font-family: Arvo, Helvetica,serif;
+    font-size: calc(12px + ( 20 - 12 ) * (( 100vw - 320px ) / ( 1200 - 320)));
+    border: 0.2em solid transparent;
+    border-radius: 10em 1em;
+    width: 40%;
+}
+
+.loginWithDiscord {
+    font-family: Arvo, Helvetica,serif;
+    font-size: calc(12px + ( 20 - 12 ) * (( 100vw - 320px ) / ( 1200 - 320)));
+    border: 0.2em solid transparent;
+    border-radius: 10em 1em;
+    width: 40%;
+}
+
+@media screen and (max-width: 600px){
+    .mainContent {
+        justify-content: flex-start;
+        width: auto;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
+    .description {
+        height: auto;
+        width: auto;
+    }
+
+    .buttons {
+        height: 20vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        row-gap: 1vh;
+    }
+
+    .addToDiscord {
+        width: 100%;
+    }
+
+    .loginWithDiscord {
+        width: 100%;
+    }
+}

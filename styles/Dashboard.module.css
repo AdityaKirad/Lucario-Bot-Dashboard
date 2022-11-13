@@ -1,0 +1,238 @@
+@font-face {
+    font-family: Anurati;
+    src: url('../public/Anurati-Regular.otf');
+}
+
+.dashboardHomeContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #17181f;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 100%;
+}
+
+/* Navigation CSS starts Here */
+
+.navigationBarWrapper {
+    display: flex;
+    height: 10vh;
+}
+
+.navigationBar {
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+}
+
+.logoShadow {
+    display: flex;
+    align-items: center;
+    margin-left: 3%;
+    gap: 2%;
+    cursor: pointer;
+    user-select: none;
+}
+
+.logoShadow::before {
+    content: "";
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 0px 0px 88px #3994FF;
+    animation: glow 5s linear infinite;
+}
+
+@keyframes glow {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.5);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.brandName {
+    font-family: Arvo, Helvetica,serif;
+    font-size: clamp(3rem, 2vw + 2rem, 4rem);
+    color: white;
+}
+
+.plugin {
+    font-family: Arvo, Helvetica,serif;
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
+    color: #BBB;
+}
+
+.navLinks {
+    font-family:Arvo, Helvetica,serif;
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
+    color: #BBB;
+}
+
+.desktopNavgroup {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1%;
+    gap: 1rem;
+}
+
+.dropdownActive {
+    transform: rotate(180deg);
+    transition: transform 200ms linear;
+}
+
+.dropdownNotActive {
+    transform: rotate(0deg);
+    transition: transform 200ms linear;
+}
+
+/* Navigation CSS ends Here */
+
+/* Dropdown CSS starts Here */
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    width: 30vw;
+    background: #00000059;
+    backdrop-filter: blur(1vw);
+    border-radius: 8px;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 200ms cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+}
+
+.avatarDropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    width: 20vw;
+    background: #00000059;
+    backdrop-filter: blur(1vw);
+    border-radius: 8px;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 200ms cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+}
+
+.dropdown.active{
+    opacity: 1;
+    top: 1rem;
+    transition: all 200ms cubic-bezier(.4,0,.2,1);
+    pointer-events: unset;
+}
+
+.avatarDropdown.active{
+    opacity: 1;
+    top: 1rem;
+    transition: all 200ms cubic-bezier(.4,0,.2,1);
+    pointer-events: unset;
+}
+
+.dropdownContentWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    padding: 1vh 1vw;
+}
+
+.dropdownContent {
+    display: flex;
+}
+
+.dropdownContentIconsContainer {
+    display: flex;
+    align-items: center;
+}
+
+.dropdownMainContent {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vw;
+}
+
+.dropdownContentHeadings {
+    font-family: Arvo, Helvetica,serif;
+    font-size: calc(16px + ( 20 - 16 ) * (( 100vw - 600px ) / ( 1200 - 600)));
+    font-size: 1.6rem;
+    color: white;
+}
+
+.dropdownContentHeadingParts {
+    font-family: Arvo, Helvetica,serif;
+    font-size: calc(16px + ( 20 - 16 ) * (( 100vw - 600px ) / ( 1200 - 600)));
+    font-size: 1.6rem;
+    color: #bbb;
+}
+
+/* Dropdown CSS ends Here */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 10%;
+}
+
+.selectServer {
+    color: white;
+    font-family: Arvo, Helvetica,serif;
+    font-size: calc(30px + ( 40 - 30 ) * (( 100vw - 600px ) / ( 1200 - 600 )));
+}
+
+.guildCard {
+    height: 40vh;
+}
+
+.guildCardPrimary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    background: #2D2F3C;
+    backdrop-filter: blur(1vw);
+    border-radius: 8px;
+}
+
+.guildImage {
+    position: relative;
+    border: 2px solid white;
+    border-radius: 50%;
+    z-index: 2;
+    filter: drop-shadow(rgba(0, 0, 0, 0.16) 0px 32px 72px)
+}
+
+.serverNameInitial{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arvo, Helvetica,serif;
+    color: white;
+    border: 2px solid grey;
+    border-radius: 50%;
+    height: calc(36px + ( 62 - 36 ) * (( 100vw - 320px ) / ( 1200 - 320)));
+    width: calc(36px + ( 62 - 36 ) * (( 100vw - 320px ) / ( 1200 - 320)));
+}
+
+.serverName{
+    font-family: Arvo, Helvetica,serif;
+    font-size: 1.6rem;
+    color: white;
+}
+
+.serverRole {
+    font-family: Arvo, Helvetica,serif;
+    font-size: 1.4rem;
+    color: grey;
+}

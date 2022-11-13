@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #17181f;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+}
+
+.p404 {
+    padding-top: 5vh;
+    color: white;
+    font-family: Macondo, cursive;
+    font-size: calc(36px + ( 102 - 36 ) * (( 100vw - 320px ) / ( 1200 - 320)));
+    text-transform: uppercase;
+}
+
+.errorDesc {
+    color: white;
+    font-family: 'Comic Sans MS', cursive;
+    font-size: calc(16px + ( 24 - 16 ) * (( 100vw - 320px ) / ( 1200 - 320 )));
+    text-transform: uppercase;
+}
+
+.goBack {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: calc(12px + ( 24 - 12 ) * (( 100vw - 320px ) / ( 1200 - 320 )));
+    border: 1px solid transparent;
+    border-radius: 24px;
+    text-transform: uppercase;
+    background: #0099FF;
+    margin-top: 2vh;
+}
+
+.waves {
+    position: absolute;
+    bottom: 0px;
+    z-index: 0;
+}
