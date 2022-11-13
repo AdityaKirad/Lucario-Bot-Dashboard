@@ -4,7 +4,6 @@ import Image from "next/future/image";
 import { useRouter } from 'next/router';
 import { Grid, Box, Typography, Button } from '@mui/material';
 import {createTheme} from '@mui/material/styles';
-import { InviteWindow } from './NewWindow';
 import styles from '../styles/Dashboard.module.css';
 
 interface guildProps {
@@ -28,12 +27,6 @@ interface guildProps {
 
 const GuildCard: NextPage<guildProps> = ({ mutualGuilds, nonMutualGuilds }) => {
     const router = useRouter()
-    const [popup, setPopup] = useState(false);
-    const [guildId, setGuildId] = useState('');
-    const openPopout = (guild_id: string) => {
-        setPopup(true)
-        setGuildId(guild_id)
-    }
     const theme = createTheme({
         breakpoints: {
             values: {
@@ -146,7 +139,7 @@ const GuildCard: NextPage<guildProps> = ({ mutualGuilds, nonMutualGuilds }) => {
                                                     <Typography className={styles.serverName}>{item.name}</Typography>
                                                     <Typography className={styles.serverRole}>Owner</Typography>
                                                 </Box>
-                                                <Button variant='contained' sx={{ fontFamily: 'Arvo, Helvetica,serif', marginLeft: 'auto', fontSize: '1.6rem', background: '#FFFFFF1A', '&:hover': {background: '#FFFFFF3A'}}} onClick={() => openPopout(item.id)}>Setup</Button>
+                                                <Button variant='contained' sx={{ fontFamily: 'Arvo, Helvetica,serif', marginLeft: 'auto', fontSize: '1.6rem', background: '#FFFFFF1A', '&:hover': {background: '#FFFFFF3A'}}}>Setup</Button>
                                             </Box>
                                         </Box>
                                     </Grid>
@@ -164,7 +157,7 @@ const GuildCard: NextPage<guildProps> = ({ mutualGuilds, nonMutualGuilds }) => {
                                                     <Typography className={styles.serverName}>{item.name}</Typography>
                                                     <Typography className={styles.serverRole}>Owner</Typography>
                                                 </Box>
-                                                <Button variant='contained' sx={{ fontFamily: 'Arvo, Helvetica,serif', marginLeft: 'auto', fontSize: '1.6rem', background: '#FFFFFF1A', '&:hover': {background: '#FFFFFF3A'}}} onClick={() => openPopout(item.id)}>Setup</Button>
+                                                <Button variant='contained' sx={{ fontFamily: 'Arvo, Helvetica,serif', marginLeft: 'auto', fontSize: '1.6rem', background: '#FFFFFF1A', '&:hover': {background: '#FFFFFF3A'}}}>Setup</Button>
                                             </Box>
                                         </Box>
                                     </Grid>
@@ -183,7 +176,7 @@ const GuildCard: NextPage<guildProps> = ({ mutualGuilds, nonMutualGuilds }) => {
                                                     <Typography className={styles.serverName}>{item.name}</Typography>
                                                     <Typography className={styles.serverRole}>Bot Master</Typography>
                                                 </Box>
-                                                <Button variant='contained' sx={{ fontFamily: 'Arvo, Helvetica,serif', marginLeft: 'auto', fontSize: '1.6rem', background: '#FFFFFF1A', '&:hover': {background: '#FFFFFF3A'}}} onClick={() => openPopout(item.id)}>Setup</Button>
+                                                <Button variant='contained' sx={{ fontFamily: 'Arvo, Helvetica,serif', marginLeft: 'auto', fontSize: '1.6rem', background: '#FFFFFF1A', '&:hover': {background: '#FFFFFF3A'}}}>Setup</Button>
                                             </Box>
                                         </Box>
                                     </Grid>
@@ -201,7 +194,7 @@ const GuildCard: NextPage<guildProps> = ({ mutualGuilds, nonMutualGuilds }) => {
                                                     <Typography className={styles.serverName}>{item.name}</Typography>
                                                     <Typography className={styles.serverRole}>Bot Master</Typography>
                                                 </Box>
-                                                <Button variant='contained' sx={{ fontFamily: 'Arvo, Helvetica,serif', marginLeft: 'auto', fontSize: '1.6rem', background: '#FFFFFF1A', '&:hover': {background: '#FFFFFF3A'}}} onClick={() => openPopout(item.id)}>Setup</Button>
+                                                <Button variant='contained' sx={{ fontFamily: 'Arvo, Helvetica,serif', marginLeft: 'auto', fontSize: '1.6rem', background: '#FFFFFF1A', '&:hover': {background: '#FFFFFF3A'}}}>Setup</Button>
                                             </Box>
                                         </Box>
                                     </Grid>
@@ -211,7 +204,6 @@ const GuildCard: NextPage<guildProps> = ({ mutualGuilds, nonMutualGuilds }) => {
                     })
                 }
             </Grid>
-            {popup ? <InviteWindow url= {`https://discord.com/api/oauth2/authorize?client_id=961965367767470171&guild_id=${guildId}&disable_guild_select=true&permissions=8&scope=bot%20applications.commands&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard`} guildId={`${guildId}`} onUnLoad={() => setPopup(false)}/> : null}
         </React.Fragment>
     )
 }
