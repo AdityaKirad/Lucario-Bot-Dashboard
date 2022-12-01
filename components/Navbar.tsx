@@ -2,11 +2,9 @@ import {useSession} from 'next-auth/react'
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { AppBar, Avatar, Box, Button, List, ListItem, useMediaQuery, createTheme } from '@mui/material';
-import {KeyboardArrowDown} from '@mui/icons-material';
-import {ModerationSVG, EngagementSVG, SocialConnectersSVG, UtilitiesSVG, DiscordSVG} from './SVGComponents';
-import DrawerComponent from './DrawerComponent';
-import {LoginWindow} from './NewWindow';
-import styles from '../styles/Home.module.css';
+import {ModerationSVG, EngagementSVG, SocialConnectersSVG, UtilitiesSVG, DiscordSVG,ArrowDownSVG} from '@components/SVGComponents';
+import {LoginWindow} from '@components/NewWindow';
+import styles from 'styles/Home.module.css';
 
 const Navbar = () => {
     const {data: session, status} = useSession()
@@ -38,14 +36,13 @@ const Navbar = () => {
                 <Box sx={{margin: 'auto 2vw auto auto'}}>
                     <Button variant='contained' className={styles.login} onClick={() => setPopup(prevState => true)}>Login</Button>
                     {popup && !session ? <LoginWindow url='/signinpage' onUnLoad={() => setPopup(prevState => false)} /> : null}
-                    <DrawerComponent />
                 </Box> 
             )
              : (
                 <Box className={styles.desktopNavGroup}>
                     <List sx={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
                         <ListItem sx={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', position: 'relative', padding: 0, width: 'auto'}}>
-                            <Button className={styles.plugin} onClick={() => setPlugin(prevState => !prevState)} sx={{textTransform: 'none', padding: 0, '&:hover': {background: 'transparent'}}} disableRipple>Plugin<KeyboardArrowDown className={plugin ? styles.dropdownActive : styles.dropdownNotActive} sx={{ color: "#FCBBF3", width: 24, height: 24 }}/></Button>
+                            <Button className={styles.plugin} onClick={() => setPlugin(prevState => !prevState)} sx={{textTransform: 'none', padding: 0, '&:hover': {background: 'transparent'}}} disableRipple>Plugin<ArrowDownSVG className={plugin ? styles.dropdownActive : styles.dropdownNotActive} styles={{ color: "#9195AB", width: 24, height: 24 }}/></Button>
                             <Box className={`${styles.dropdown} ${plugin ? styles.active : ''}`}>
                                 <Box className={styles.dropdownContentWrapper}>
                                     <Box className={styles.dropdownContent}>
@@ -81,7 +78,7 @@ const Navbar = () => {
                         </ListItem>
                     <Box><Link href='#'><a  className={styles.navLinks}>Invite</a></ Link></Box>
                     <Box><Link href='#'><a  className={styles.navLinks}>Support Server</a></ Link></Box>
-                    <Box><Button variant='contained' className={styles.login} onClick={() => setPopup(prevState => true)}>Login<DiscordSVG styles={{height: '2rem', width: '2rem', color: '#FFF'}}/></Button></Box>
+                    <Box><Button variant='contained' className={styles.login} onClick={() => setPopup(prevState => true)}>Login<DiscordSVG styles={{height: '2em', width: '2em', color: '#FFF'}}/></Button></Box>
                     {popup && !session ? <LoginWindow url='/signinpage' onUnLoad={() => setPopup(prevState => false)} /> : null}
                     </List>
                 </Box>

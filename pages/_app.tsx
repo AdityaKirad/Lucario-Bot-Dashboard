@@ -1,10 +1,10 @@
-import '../styles/globals.css';
-import '../styles/nprogress.css';
+import 'styles/globals.css';
+import 'styles/nprogress.css';
 import "@fontsource/arvo";
 import React, { useEffect } from 'react';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '@mui/material';
-import { theme } from "../utils/theme";
+import { theme } from "@utils/theme";
 import createEmotionCache from '../utils/createEmotionCache';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import type { AppProps } from 'next/app';

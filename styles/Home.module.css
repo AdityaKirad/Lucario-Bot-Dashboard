@@ -73,13 +73,13 @@
 .navLinks {
     font-family:Arvo, Helvetica,serif;
     font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
-    color: #FCBBF3;
+    color: #9195AB;
 }
 
 .plugin {
     font-family: Arvo, Helvetica,serif;
     font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
-    color: #FCBBF3;
+    color: #9195AB;
 }
 
 .dropdownActive {
@@ -93,22 +93,6 @@
 }
 
 /*Navigation CSS Ends Here*/
-
-/*Drawer Componenet CSS Starts Here */
-
-.collapseNavigationLink {
-    text-decoration: none;
-    color: #cb69c1;
-    font-family: Arvo, Helvetica,serif;
-}
-
-.collapseNavigationLinkDescription {
-    text-emphasis: none;
-    color: white;
-    font-family: Arvo, Helvetica,serif;
-}
-
-/*Drawer Componenet CSS Ends Here */
 
 /* Dropdown Component CSS Starts Here */
 
@@ -143,7 +127,7 @@
 
 .dropdownContent {
     display: flex;
-    flex-direction: row;
+    cursor: pointer;
 }
 
 .dropdownContentIconsContainer {
@@ -155,6 +139,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 1vw;
+    gap: 1rem;
 }
 
 .dropdownContentHeadings {
@@ -169,6 +154,18 @@
     font-size: calc(16px + ( 20 - 16 ) * (( 100vw - 600px ) / ( 1200 - 600)));
     font-size: 1.6rem;
     color: grey;
+}
+
+.dropdownContentHeadingParts:hover {
+    color: white;
+}
+
+.dropdownContentHeadings:hover + .dropdownContentHeadingParts {
+    color: white;
+}
+
+.dropdownContentIconsContainer:hover + .dropdownMainContent .dropdownContentHeadingParts {
+    color: white;
 }
 
 /* Dropdown Component CSS Starts Here */

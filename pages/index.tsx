@@ -7,9 +7,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Wave from 'react-wavify';
-import Navbar from '../components/Navbar';
-import { LoginWindow } from "../components/NewWindow";
-import styles from '../styles/Home.module.css'
+import Navbar from '@components/Navbar';
+import { LoginWindow } from "@components/NewWindow";
+import styles from 'styles/Home.module.css'
 
 const Home: NextPage = () => {
   const [popup, setPopup] = useState(false);

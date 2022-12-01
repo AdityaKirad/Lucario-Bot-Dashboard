@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import type { NextPage } from 'next';
 import Image from "next/future/image";
 import { useRouter } from 'next/router';
 import { Grid, Box, Typography, Button } from '@mui/material';
 import {createTheme} from '@mui/material/styles';
-import styles from '../styles/Dashboard.module.css';
+import styles from 'styles/Dashboard.module.css';
 
 interface guildProps {
     mutualGuilds: Array<{
