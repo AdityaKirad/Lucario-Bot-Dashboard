@@ -66,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (context) =>  {
     const accessToken = token?.accessToken
     if(!session) return {redirect: {destination: '/', permanent: false}};
     try {
-        const {data: guilds} = await axios.get(`https://lucariodashboard.netlify.app/api/discord/guilds/${accessToken}`)
+        const {data: guilds} = await axios.get(`/api/discord/guilds/${accessToken}`)
         const [mutualGuilds, nonMutualGuilds] = [guilds[0], guilds[1]]
         return {props: {session, mutualGuilds, nonMutualGuilds}}
     } catch(err) {
