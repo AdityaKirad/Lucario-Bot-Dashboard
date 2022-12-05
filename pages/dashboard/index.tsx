@@ -1,14 +1,15 @@
-import type { NextPage } from 'next';
+import type { NextPage, NextApiRequest } from 'next';
 import { GetServerSideProps } from 'next';
 import {getSession} from 'next-auth/react';
 import Head from 'next/head';
 import React from 'react';
 import { Box } from '@mui/system';
-import { getGuildWithPermission } from '../api/discord/guilds';
-import DashboardNavbar from '../../components/DashboardNavbar';
-import GuildCard from '../../components/GuildCard';
-import styles from '../../styles/Dashboard.module.css';
+import DashboardNavbar from '@components/DashboardNavbar';
+import GuildCard from '@components/GuildCard';
+import styles from 'styles/Dashboard.module.css';
 import { Typography } from '@mui/material';
+import axios from 'axios';
+import {getToken} from 'next-auth/jwt'
 
 interface dashboardProps {
     session: {
@@ -60,11 +61,13 @@ export default DashboardHome;
 
 export const getServerSideProps: GetServerSideProps = async (context) =>  {
     const session = await getSession(context);
+    const secret = process.env.NEXTAUTH_SECRET
+    const token = await getToken({req: context.req, secret})
+    const accessToken = token?.accessToken
     if(!session) return {redirect: {destination: '/', permanent: false}};
     try {
-        const guilds = await getGuildWithPermission(session?.user?.id as string);
-        const mutualGuilds = guilds[0];
-        const nonMutualGuilds = guilds[1];
+        const {data: guilds} = await axios.get(`https://lucariodashboard.netlify.app/api/discord/guilds/${accessToken}`)
+        const [mutualGuilds, nonMutualGuilds] = [guilds[0], guilds[1]]
         return {props: {session, mutualGuilds, nonMutualGuilds}}
     } catch(err) {
         console.log(err)

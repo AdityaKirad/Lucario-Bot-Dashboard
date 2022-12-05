@@ -3,8 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, {useState} from "react";
 import {Box,Avatar,IconButton,Typography, Button} from "@mui/material";
-import {ShakingHandSVG, UtilitiesSVG, EngagementSVG, SettingsSVG, ArrowDownSVG, BackSVG, MenuSVG, ModerationSVG,ReactionRolesSVG} from "./SVGComponents";
-import styles from "../styles/MainDashboard.module.css";
+import {ShakingHandSVG, UtilitiesSVG, EngagementSVG, SettingsSVG, ArrowDownSVG, BackSVG, MenuSVG, ModerationSVG,ReactionRolesSVG} from "@components/SVGComponents";
+import styles from "styles/MainDashboard.module.css";
 
 interface sidebarProps {
     mutualGuild: Array<{

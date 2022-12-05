@@ -5,10 +5,11 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { getSession } from 'next-auth/react';
 import { Box } from '@mui/material';
-import { getGuildWithPermission } from '../../api/discord/guilds';
-import SideBar from '../../../components/SideBar';
-import DashboardContent from '../../../components/DashboardContent';
-import styles from '../../../styles/MainDashboard.module.css';
+import axios from 'axios';
+import {getToken} from 'next-auth/jwt'
+import SideBar from '@components/SideBar';
+import DashboardContent from '@components/DashboardContent';
+import styles from 'styles/MainDashboard.module.css';
 
 interface GuildBotFeaturesProps {
     session: {
@@ -50,10 +51,13 @@ export default GuildBotFeatures
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
+    const secret = process.env.NEXTAUTH_SECRET
+    const token = await getToken({req: context.req, secret})
+    const accessToken = token?.accessToken
     if(!session) return {redirect: {destination: '/', permanent: false}};
     try {
-        const guilds = await getGuildWithPermission(session?.user?.id as string);
-        const mutualGuilds = guilds[0];
+        const {data: guilds} = await axios.get(`https://lucariodashboard.netlify.app/api/discord/guilds/${accessToken}`)
+        const mutualGuilds = guilds[0]
         return {props: {session, mutualGuilds}}
     } catch(err) {
         console.log(err)

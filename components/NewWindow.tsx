@@ -1,5 +1,4 @@
 import React, {useState, useRef, useEffect} from "react";
-import {useRouter} from 'next/router';
 import {createPortal} from 'react-dom';
 
 interface NewWindowProps {

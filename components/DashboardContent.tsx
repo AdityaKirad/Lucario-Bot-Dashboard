@@ -3,9 +3,9 @@ import Link from 'next/link';
 import React, {useState} from 'react';
 import {Box, Avatar,Typography,Divider,Button,Grid} from '@mui/material';
 import {useSession, signOut} from 'next-auth/react';
-import StyledSwicth from './StyledSwitch';
-import {ArrowDownSVG,ChatSVG,ShakingHandSVG,ReactionRolesSVG,ModerationSVG} from './SVGComponents';
-import styles from '../styles/MainDashboard.module.css';
+import StyledSwicth from '@components/StyledSwitch';
+import {ArrowDownSVG,ChatSVG,ShakingHandSVG,ReactionRolesSVG,ModerationSVG} from '@components/SVGComponents';
+import styles from 'styles/MainDashboard.module.css';
 
 const DashboardContent: NextPage = () => {
     const [dropdown, setDropdown] = useState(false);
@@ -62,7 +62,7 @@ const DashboardContent: NextPage = () => {
                             <Grid item md={4} xs={12}>
                                 <Box className={styles.card}>
                                     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                                        <ShakingHandSVG styles={{height: '2.4rem', width: '2.4rem'}}/>
+                                        <ShakingHandSVG styles={{height: '2.4rem', width: '2.4rem', color: checked.welcome ? "#0099FF" : ""}}/>
                                         <StyledSwicth sx={{m: 1}} checked={checked.welcome} onChange={handleChange} name='welcome'/>
                                     </Box>
                                     <Typography className={styles.cardHeading}>Welcome</Typography>
@@ -72,7 +72,7 @@ const DashboardContent: NextPage = () => {
                             <Grid item md={4} xs={12}>
                                 <Box className={styles.card}>
                                     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                                        <ReactionRolesSVG styles={{height: '2.4rem', width: '2.4rem'}}/>
+                                        <ReactionRolesSVG styles={{height: '2.4rem', width: '2.4rem', color: checked.reactionRoles ? "#0099FF" : ""}}/>
                                         <StyledSwicth sx={{m: 1}} checked={checked.reactionRoles} onChange={handleChange} name='reactionRoles'/>
                                     </Box>
                                     <Typography className={styles.cardHeading}>Reaction Roles</Typography>
@@ -82,7 +82,7 @@ const DashboardContent: NextPage = () => {
                             <Grid item md={4} xs={12}>
                                 <Box className={styles.card}>
                                     <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                                        <ModerationSVG styles={{height: '2.4rem', width: '2.4rem'}}/>
+                                        <ModerationSVG styles={{height: '2.4rem', width: '2.4rem', color: checked.moderator ? "#0099FF" : ""}}/>
                                         <StyledSwicth sx={{m: 1}} checked={checked.moderator} onChange={handleChange} name='moderator'/>
                                     </Box>
                                     <Typography className={styles.cardHeading}>Moderator</Typography>

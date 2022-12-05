@@ -2,9 +2,8 @@ import Link from 'next/link';
 import {signOut, useSession} from 'next-auth/react';
 import React, {useState} from 'react';
 import {Box, AppBar, Avatar, Button, List, ListItem, useMediaQuery, createTheme, Typography, Divider} from '@mui/material';
-import {ModerationSVG,EngagementSVG,SocialConnectersSVG,UtilitiesSVG,ArrowDownSVG} from './SVGComponents';
-import DrawerComponent from "./DrawerComponent";
-import styles from '../styles/Dashboard.module.css';
+import {ModerationSVG,EngagementSVG,SocialConnectersSVG,UtilitiesSVG,ArrowDownSVG} from '@components/SVGComponents';
+import styles from 'styles/Dashboard.module.css';
 
 const DashboardNavbar = () => {
     const [plugin, setPlugin] = useState(false);
@@ -44,13 +43,12 @@ const DashboardNavbar = () => {
                     {isMatch ? (
                         <Box className={styles.drawerContainer} sx={{display: 'flex', margin: 'auto 2vw auto auto'}}>
                             <Avatar alt="user-image" src={`${userImage}`}/>
-                            <DrawerComponent />
                         </Box>
                     ) : (
                         <Box className={styles.desktopNavgroup}>
                             <List sx={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
                                 <ListItem sx={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', position: 'relative', padding: 0, width: 'auto'}}>
-                                    <Button className={styles.plugin} onClick={() => pluginDropdownHandler()} sx={{textTransform: 'none', padding: 0, '&:hover': {background: 'transparent'}}} disableRipple>Plugin<ArrowDownSVG className={plugin ? styles.dropdownActive : styles.dropdownNotActive} styles={{ color: "#bbb", width: 24, height: 24 }}/></Button>
+                                    <Button className={styles.plugin} onClick={() => pluginDropdownHandler()} sx={{textTransform: 'none', padding: 0, '&:hover': {background: 'transparent'}}} disableRipple>Plugin<ArrowDownSVG className={plugin ? styles.dropdownActive : styles.dropdownNotActive} styles={{ color: "#9195AB", width: 24, height: 24 }}/></Button>
                                     <Box className={`${styles.dropdown} ${plugin ? styles.active : ''}`} sx={{marginTop: '5vh'}}>
                                         <Box className={styles.dropdownContentWrapper}>
                                             <Box className={styles.dropdownContent}>
@@ -90,7 +88,7 @@ const DashboardNavbar = () => {
                             <Box sx={{display: 'flex', flexDirection: 'column'}}>
                                 <Box sx={{display: 'flex', alignItems: 'center', cursor: 'pointer'}} onClick={() => avatarDropdownHandler()}>
                                     <Avatar alt="user-image" src={`${userImage}`}/>
-                                    <ArrowDownSVG className={avatarDropdown ? styles.dropdownActive : styles.dropdownNotActive} styles={{width: 24, height: 24, color: '#bbb'}}/>
+                                    <ArrowDownSVG className={avatarDropdown ? styles.dropdownActive : styles.dropdownNotActive} styles={{width: 24, height: 24, color: '#9195AB'}}/>
                                     </Box>
                                 <Box className={`${styles.avatarDropdown} ${avatarDropdown ? styles.active : ''}`} sx={{marginTop: '10vh'}}>
                                     <Box className={styles.dropdownContentWrapper}>

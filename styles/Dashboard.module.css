@@ -67,13 +67,13 @@
 .plugin {
     font-family: Arvo, Helvetica,serif;
     font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
-    color: #BBB;
+    color: #9195AB;
 }
 
 .navLinks {
     font-family:Arvo, Helvetica,serif;
     font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
-    color: #BBB;
+    color: #9195AB;
 }
 
 .desktopNavgroup {
@@ -149,6 +149,7 @@
 
 .dropdownContent {
     display: flex;
+    cursor: pointer;
 }
 
 .dropdownContentIconsContainer {
@@ -160,6 +161,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 1vw;
+    gap: 1rem;
 }
 
 .dropdownContentHeadings {
@@ -174,6 +176,18 @@
     font-size: calc(16px + ( 20 - 16 ) * (( 100vw - 600px ) / ( 1200 - 600)));
     font-size: 1.6rem;
     color: #bbb;
+}
+
+.dropdownContentHeadingParts:hover {
+    color: white;
+}
+
+.dropdownContentHeadings:hover + .dropdownContentHeadingParts {
+    color: white;
+}
+
+.dropdownContentIconsContainer:hover + .dropdownMainContent .dropdownContentHeadingParts {
+    color: white;
 }
 
 /* Dropdown CSS ends Here */

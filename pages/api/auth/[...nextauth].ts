@@ -1,7 +1,6 @@
 import { JWT } from "next-auth/jwt";
-import NextAuth from "next-auth/next";
+import NextAuth, {NextAuthOptions} from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
-import { Prisma } from "../../../prisma/Prisma.server";
 
 const DISCORD_AUTHORIZATION_URL: string = "https://discord.com/api/oauth2/authorize" + 
     new URLSearchParams({
@@ -49,43 +48,7 @@ async function refreshAccessToken(token: JWT) {
     }
 }
 
-async function updateTokenInDatabase(discordId: string, discordName: string, accessToken: string, refreshToken: string) {
-    try {
-        const existingUser = await Prisma.userswebinformation.findUnique({
-            where: {
-                discordId: Number(discordId),
-            },
-        });
-        if(existingUser) {
-            const existingUser = await Prisma.userswebinformation.update({
-                where: {
-                    discordId: Number(discordId),
-                },
-                data: {
-                    discordId: Number(discordId),
-                    discordName: discordName,
-                    accessToken: accessToken,
-                    refreshToken: refreshToken,
-                },
-            });
-            return existingUser;
-        } else {
-            const newUser = await Prisma.userswebinformation.create({
-                data: {
-                    discordId: Number(discordId),
-                    discordName: discordName,
-                    accessToken: accessToken,
-                    refreshToken: refreshToken,
-                },
-            });
-            return newUser;
-        }
-    } catch(err) {
-        console.log(err);
-    }
-}
-
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
     providers: [
         DiscordProvider({
             clientId: process.env.DISCORD_CLIENT_ID,
@@ -119,21 +82,16 @@ export default NextAuth({
 
         async session({ session, token }) {
             session.user = token.user;
-            let accessToken = token.accessToken;
-            let refreshToken = token.refreshToken;
-            let discordId = token.user.id
-            let discordName = token.user.name
-            updateTokenInDatabase(discordId, discordName, accessToken, refreshToken)
-            .catch((e) => {
-                throw e;
-            });
             return session;
         },
     },
 
     session: {
+        strategy:"jwt",
         maxAge: 60*60*24*2
     },
 
     secret: process.env.NEXTAUTH_SECRET,
-})
+}
+
+export default NextAuth(authOptions)

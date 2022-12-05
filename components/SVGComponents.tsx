@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import React from 'react';
-import { SvgIcon } from "@mui/material";
+import { SvgIcon } from '@mui/material';
 
 interface SVGProps {
     styles?: {};

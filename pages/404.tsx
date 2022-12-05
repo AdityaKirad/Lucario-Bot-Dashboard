@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router'
 import {Box, Typography, Button} from '@mui/material';
 import Wave from 'react-wavify';
-import styles from '../styles/Error.module.css';
+import styles from 'styles/Error.module.css';
 
 const Custom404: NextPage = () => {
     const router = useRouter();
