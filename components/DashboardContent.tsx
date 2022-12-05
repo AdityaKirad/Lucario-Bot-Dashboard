@@ -51,11 +51,11 @@ const DashboardContent: NextPage = () => {
                             <Typography sx={{fontFamily: 'Arvo, Helvetica, serif', fontSize: '1.8rem'}}>Plugin Gallery</Typography>
                             <Typography sx={{fontFamily: 'Arvo, Helvetica, serif', fontSize: '1.4rem', color: 'grey'}}>Which plugin are we going to configure today?</Typography>
                         </Box>
-                        <Button sx={{color: 'white', fontSize: '1.4rem', fontFamily: 'Arvo, Helevetica, serif', textTransform: 'none', background: '#1f2129', borderRadius: '12px', '&:hover': {background: '#1f2129'}}} disableRipple onClick={() => openSupportServer()}><ChatSVG styles={{height: '2.4rem', width: '2.4rem'}}/>Support Server</Button>
+                        <Button sx={{position: 'inherit' ,color: 'white', fontSize: '1.4rem', fontFamily: 'Arvo, Helevetica, serif', textTransform: 'none', background: '#1f2129', borderRadius: '12px', '&:hover': {background: '#1f2129'}}} disableRipple onClick={() => openSupportServer()}><ChatSVG styles={{height: '2.4rem', width: '2.4rem'}}/>Support Server</Button>
                     </Box>
                 </Box>
                 <Box sx={{display: 'flex', flexDirection: 'column', padding: '3vh 3vw', background: '#1f2129', width: '90%', margin: '0 auto',gap: '2rem',borderRadius: '12px'}}>
-                    <Button sx={{color: 'white', fontFamily: 'Arvo, Helvetica, serif', fontSize: '1.4rem', justifyContent: 'space-between', padding: 0, textTransform: 'none', '&:hover': {background: 'transparent'}}} onClick={() => setServerManagement(prevState => !prevState)} disableRipple>Server Management<ArrowDownSVG className={serverManagement ? styles.up : styles.down} styles={{width: '2.4rem', height: '2.4rem'}}/></Button>
+                    <Button sx={{position: 'inherit' ,color: 'white', fontFamily: 'Arvo, Helvetica, serif', fontSize: '1.4rem', justifyContent: 'space-between', padding: 0, textTransform: 'none', '&:hover': {background: 'transparent'}}} onClick={() => setServerManagement(prevState => !prevState)} disableRipple>Server Management<ArrowDownSVG className={serverManagement ? styles.up : styles.down} styles={{width: '2.4rem', height: '2.4rem'}}/></Button>
                     <Divider sx={{borderColor: '#808080'}}/>
                     <Box className={serverManagement ? styles.open : styles.close}>
                         <Grid container spacing={2}>

@@ -25,8 +25,8 @@ interface guildProps {
     }>;
 }
 
-const GuildCard: NextPage<guildProps> = ({ mutualGuilds, nonMutualGuilds }) => {
-    const router = useRouter()
+const GuildCard: NextPage<guildProps> = ({mutualGuilds,nonMutualGuilds}) => {
+    const router = useRouter();
     const theme = createTheme({
         breakpoints: {
             values: {
@@ -37,10 +37,10 @@ const GuildCard: NextPage<guildProps> = ({ mutualGuilds, nonMutualGuilds }) => {
                 xl: 1536
             }
         }
-    })
+    });
     const moveToMainDashboard = (guild_id: string) => {
         router.push(`/dashboard/${guild_id}`)
-    } 
+    };
     return (
         <React.Fragment>
             <Grid container spacing={8} sx={{marginTop: '1vh'}}>
