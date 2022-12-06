@@ -1,26 +1,18 @@
-import type { NextPage, NextApiRequest } from 'next';
+import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
-import {getSession} from 'next-auth/react';
 import Head from 'next/head';
 import React from 'react';
-import { Box } from '@mui/system';
+import { Box, Typography } from '@mui/material';
+import {getToken} from 'next-auth/jwt';
+import { unstable_getServerSession } from 'next-auth/next';
+import {authOptions} from 'pages/api/auth/[...nextauth]';
+import { useSession } from 'next-auth/react';
 import DashboardNavbar from '@components/DashboardNavbar';
 import GuildCard from '@components/GuildCard';
 import styles from 'styles/Dashboard.module.css';
-import { Typography } from '@mui/material';
-import axios from 'axios';
-import {getToken} from 'next-auth/jwt'
+import getGuilds from '@utils/discord/guilds';
 
 interface dashboardProps {
-    session: {
-        user: {
-            id: string;
-            name: string;
-            email: string;
-            image: string;
-        }
-        expires: string;
-    };
     mutualGuilds: Array<{
         id: string;
         name: string;
@@ -39,7 +31,10 @@ interface dashboardProps {
     }>;
 }
 
-const DashboardHome: NextPage<dashboardProps> = ({session,mutualGuilds,nonMutualGuilds}) => {
+const Dashboard: NextPage<dashboardProps> = ({mutualGuilds,nonMutualGuilds}) => {
+    const {data: session} = useSession()
+    if(typeof window === 'undefined') return null
+    if(!session) return null
     return (
         <React.Fragment>
             <Head>
@@ -50,25 +45,24 @@ const DashboardHome: NextPage<dashboardProps> = ({session,mutualGuilds,nonMutual
                 <DashboardNavbar />
                 <Box className={styles.main}>
                     <Typography className={styles.selectServer}>Select A Server</Typography>
-                    <GuildCard mutualGuilds={mutualGuilds} nonMutualGuilds={nonMutualGuilds} />
+                    <GuildCard mutualGuilds={mutualGuilds} nonMutualGuilds={nonMutualGuilds}/>
                 </Box>
             </Box>
         </React.Fragment>
     )
 }
 
-export default DashboardHome;
+export default Dashboard;
 
 export const getServerSideProps: GetServerSideProps = async (context) =>  {
-    const session = await getSession(context);
+    const session = await unstable_getServerSession(context.req, context.res, authOptions);
     const secret = process.env.NEXTAUTH_SECRET
     const token = await getToken({req: context.req, secret})
-    const accessToken = token?.accessToken
     if(!session) return {redirect: {destination: '/', permanent: false}};
+    const guilds = await getGuilds(token?.accessToken)
+    const [mutualGuilds, nonMutualGuilds] = [guilds[0], guilds[1]]
     try {
-        const {data: guilds} = await axios.get(`/api/discord/guilds/${accessToken}`)
-        const [mutualGuilds, nonMutualGuilds] = [guilds[0], guilds[1]]
-        return {props: {session, mutualGuilds, nonMutualGuilds}}
+    return {props: {session, mutualGuilds, nonMutualGuilds}}
     } catch(err) {
         console.log(err)
         return {

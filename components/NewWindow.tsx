@@ -26,7 +26,7 @@ export const LoginWindow = (props: NewWindowProps) => {
                 curWindow.addEventListener('unload', () => props.onUnLoad())
             }
         }
-    }, [container]);
+    }, [container,props]);
 
     return container && createPortal(props.children, container);
 };
