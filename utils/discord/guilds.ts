@@ -14,12 +14,12 @@ interface permissionsType {
 }
 
 const getGuilds = async (token: string | undefined) => {
-    const botGuild = axios.get('https://discord.com/api/v10/users/@me/guilds', {
+    const botGuild = await axios.get('https://discord.com/api/v10/users/@me/guilds', {
         headers: {
             Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`
         }
     });
-    const userGuild = axios.get('https://discord.com/api/v10/users/@me/guilds', {
+    const userGuild = await axios.get('https://discord.com/api/v10/users/@me/guilds', {
         headers: {
             Authorization: `Bearer ${token}`
         }

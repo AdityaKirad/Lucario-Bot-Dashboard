@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (context) =>  {
     const guilds = await getGuilds(token?.accessToken)
     const [mutualGuilds, nonMutualGuilds] = [guilds[0], guilds[1]]
     try {
-    return {props: {session, mutualGuilds, nonMutualGuilds}}
+        return {props: {session, mutualGuilds, nonMutualGuilds}}
     } catch(err) {
         console.log(err)
         return {
